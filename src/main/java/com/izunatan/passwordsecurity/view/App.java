@@ -72,7 +72,7 @@ public class App {
 
         String modifiedPW = pw;
 
-        modifiedPW = hashing.hashingMD5(pw);
+        modifiedPW = hashing.hashingSHA512(pw);
 
         return modifiedPW;
     }
