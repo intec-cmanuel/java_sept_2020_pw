@@ -15,7 +15,7 @@ public class Hashing {
     ex. MD5 (OBSOLETE NEVER USE OR YOU ARE A DUMDUM)
      */
 
-    public String hashingMD5(String normalPassword) {
+    public String hashingSHA512(String normalPassword) {
         String hashedPW = "";
 
         try {
