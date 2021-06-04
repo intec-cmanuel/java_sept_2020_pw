@@ -1,5 +1,7 @@
 package com.izunatan.passwordsecurity.service;
 
+import java.util.Base64;
+
 public class Encoding {
     /*
     The purpose of encoding is to transform data so that it can be properly (and safely) consumed by a different
@@ -12,13 +14,17 @@ public class Encoding {
      */
 
     public String encodeBase64Password(String normalPassword){
-        String encodedPW = "";
+        String encodedPW;
+
+        encodedPW = Base64.getEncoder().encodeToString(normalPassword.getBytes());
 
         return encodedPW;
     }
 
     public String decodeBase64Password(String encodedPassword){
-        String decodedPW = "";
+        String decodedPW;
+
+        decodedPW = new String(Base64.getDecoder().decode(encodedPassword));
 
         return decodedPW;
     }

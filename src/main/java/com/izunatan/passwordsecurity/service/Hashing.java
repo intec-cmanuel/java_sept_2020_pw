@@ -1,5 +1,8 @@
 package com.izunatan.passwordsecurity.service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class Hashing {
     /*
     Hashing is an algorithm to map data of any size to a fixed length.
@@ -15,6 +18,24 @@ public class Hashing {
     public String hashingMD5(String normalPassword) {
         String hashedPW = "";
 
-        return hashedPW;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            md.update(normalPassword.getBytes());
+            byte[] bytes = md.digest();
+
+            /*
+            %02x means print at least 2 digits, prepend it with 0's if there's less.
+             */
+
+            for (byte b : bytes) {
+                String byteToString = String.format("%02X", b);
+                hashedPW += byteToString;
+            }
+
+        } catch (NoSuchAlgorithmException noSuchAlgorithmException) {
+
+        }
+
+        return hashedPW.toLowerCase();
     }
 }
